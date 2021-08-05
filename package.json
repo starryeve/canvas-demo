@@ -46,6 +46,12 @@
     "not ie <= 10"
   ],
   "dependencies": {
+    "canvas-nest.js": "^2.0.4",
     "vue": "^3.1.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }

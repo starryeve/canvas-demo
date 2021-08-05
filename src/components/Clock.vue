@@ -1,7 +1,7 @@
 <template>
   <canvas
     id="clock"
-    ref="canvas"
+    ref="clock"
     width="600"
     height="600"
   >
@@ -10,20 +10,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import useClock from '../composables/useClock';
 export default defineComponent({
   name: 'Clock', 
   setup   () {
-    const { canvas, initClock } = useClock ();
+    const clock = ref<HTMLCanvasElement | null>(null);
+    
 
     onMounted(() => {
+      const canvas = clock.value as HTMLCanvasElement;
+      const { initClock } = useClock (canvas);
       initClock();
     });
 
     return {
-      canvas,
-      initClock
+      clock,
     };
   }
 });
