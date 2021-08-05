@@ -1,12 +1,12 @@
-import { Ref, ref } from "vue";
 
-export default function useClock() {
-  const canvas = ref<HTMLCanvasElement | null>(null);
+export default function useClock(canvas: HTMLCanvasElement):{
+  initClock:() => void
+} {
+
   const initClock: () => void = (): void => {
-    console.log(canvas);
-    const ctx: CanvasRenderingContext2D = (canvas as Ref<
-      HTMLCanvasElement
-    >).value.getContext("2d")!;
+
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
     console.dir(ctx);
 
     document.getElementsByClassName;
@@ -31,10 +31,10 @@ export default function useClock() {
       ctx.closePath();
 
       //* 获取时间 */
-      let time = new Date();
-      let hour = time.getHours() % 12;
-      let min = time.getMinutes();
-      let sec = time.getSeconds();
+      const time = new Date();
+      const hour = time.getHours() % 12;
+      const min = time.getMinutes();
+      const sec = time.getSeconds();
       // console.table({ time, hour, min, sec });
 
       /* 绘制时针 */
@@ -45,7 +45,7 @@ export default function useClock() {
       ctx.moveTo(-10, 0);
       ctx.lineTo(40, 0);
       ctx.lineWidth = 10;
-      ctx.strokeStyle = "#aad";
+      ctx.strokeStyle = '#aad';
       ctx.stroke();
       ctx.closePath();
       ctx.restore();
@@ -56,7 +56,7 @@ export default function useClock() {
       ctx.beginPath();
       ctx.moveTo(-10, 0);
       ctx.lineTo(80, 0);
-      ctx.strokeStyle = "#a33";
+      ctx.strokeStyle = '#a33';
       ctx.lineWidth = 5;
       ctx.stroke();
       ctx.closePath();
@@ -68,7 +68,7 @@ export default function useClock() {
       ctx.beginPath();
       ctx.moveTo(-10, 0);
       ctx.lineTo(80, 0);
-      ctx.strokeStyle = "#faf";
+      ctx.strokeStyle = '#faf';
       ctx.stroke();
       ctx.closePath();
       ctx.restore();
@@ -95,11 +95,15 @@ export default function useClock() {
       ctx.restore();
 
       ctx.restore();
+      requestAnimationFrame(draw)
     };
-    setInterval(draw, 1000);
+
+    draw()
+
+   
+    
   };
   return {
-    canvas,
     initClock
   };
 }
