@@ -6,7 +6,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Clock from './components/Clock.vue';
-import Next from './components/Next.vue';
+import Next from './components/Nest.vue';
 
 
 export default defineComponent({

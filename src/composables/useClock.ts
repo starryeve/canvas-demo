@@ -1,16 +1,12 @@
-import { Ref, ref } from "vue";
 
-export default function useClock() {
-  const canvas = ref<HTMLCanvasElement | null>(null);
+export default function useClock(canvas: HTMLCanvasElement):{
+  initClock:() => void
+} {
+
   const initClock: () => void = (): void => {
-    console.log(canvas);
-    const ctx: CanvasRenderingContext2D = (canvas as Ref<
-      HTMLCanvasElement
-    >).value.getContext("2d")!;
-    console.dir(ctx);
-
-    document.getElementsByClassName;
     const PI = Math.PI;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
 
     const draw = function () {
       ctx.save();
@@ -27,15 +23,16 @@ export default function useClock() {
       ctx.arc(0, 0, 5, 0, 2 * PI);
       ctx.moveTo(0, 0);
 
-      ctx.stroke();
       ctx.closePath();
+      ctx.stroke();
+  
 
       //* 获取时间 */
-      let time = new Date();
-      let hour = time.getHours() % 12;
-      let min = time.getMinutes();
-      let sec = time.getSeconds();
-      // console.table({ time, hour, min, sec });
+      const time = new Date();
+      const hour = time.getHours() % 12;
+      const min = time.getMinutes();
+      const sec = time.getSeconds();
+   
 
       /* 绘制时针 */
       ctx.rotate(
@@ -45,9 +42,10 @@ export default function useClock() {
       ctx.moveTo(-10, 0);
       ctx.lineTo(40, 0);
       ctx.lineWidth = 10;
-      ctx.strokeStyle = "#aad";
-      ctx.stroke();
+      ctx.strokeStyle = '#aad';
       ctx.closePath();
+      ctx.stroke();
+
       ctx.restore();
       ctx.save();
 
@@ -56,10 +54,11 @@ export default function useClock() {
       ctx.beginPath();
       ctx.moveTo(-10, 0);
       ctx.lineTo(80, 0);
-      ctx.strokeStyle = "#a33";
+      ctx.strokeStyle = '#a33';
       ctx.lineWidth = 5;
-      ctx.stroke();
       ctx.closePath();
+      ctx.stroke();
+      
       ctx.restore();
       ctx.save();
 
@@ -68,9 +67,10 @@ export default function useClock() {
       ctx.beginPath();
       ctx.moveTo(-10, 0);
       ctx.lineTo(80, 0);
-      ctx.strokeStyle = "#faf";
-      ctx.stroke();
+      ctx.strokeStyle = '#faf';
       ctx.closePath();
+      ctx.stroke();
+
       ctx.restore();
       ctx.save();
 
@@ -95,11 +95,12 @@ export default function useClock() {
       ctx.restore();
 
       ctx.restore();
+      requestAnimationFrame(draw)
     };
-    setInterval(draw, 1000);
+
+    draw()
   };
   return {
-    canvas,
     initClock
   };
 }

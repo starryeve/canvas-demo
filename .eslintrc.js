@@ -34,7 +34,6 @@ module.exports = {
       'error',
       'single'
     ],
-    'no-unused-vars': 'warn',
-    'no-console': 'warn'
+    // 'no-unused-vars': 'warn',
   }
 }
