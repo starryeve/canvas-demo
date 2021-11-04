@@ -53,10 +53,10 @@ jobs:
         with:
           args: git submodule update --init --recursive
       # 使用 node:16
-      - name: use Node.js 16
+      - name: use Node.js 14
         uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 14
       # npm install
       - name: yarn 
         run: |
@@ -64,7 +64,7 @@ jobs:
           yarn build
       # Deploy
       - name: Deploy
-        uses: easingthemes/ssh-deploy@v2.0.7
+        uses: easingthemes/ssh-deploy@v2.2.11
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
           ARGS: "-avz --delete"
