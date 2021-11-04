@@ -36,7 +36,7 @@
 #           TARGET: ${{ secrets.TARGET }}
 
 # deploy.yml
-name: deploy to aliyun
+name: deploy.yml
 on:
   push:
 #     branches:
