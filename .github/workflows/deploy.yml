@@ -66,36 +66,9 @@ jobs:
       - name: Deploy
         uses: easingthemes/ssh-deploy@v2.0.7
         env:
-          SSH_PRIVATE_KEY: -----BEGIN RSA PRIVATE KEY-----
-                    MIIEpQIBAAKCAQEAxtrP0IpDSb/jRoCH2juVLGAxyIX9AV3s4y/v2fgFzaXkDzsm
-                    E9XKx9Ah7HqEr3xHpg+mwaaPXBMuAjmf3Xf4wcY/qGIgG7iBAf7PBjiUY1G+JjBO
-                    S5II3OLjKBzHY95zIPEVCLdLcLM8hDyBfTmmUskzwZnOTVAuDBg0BWOTXwJjJPPl
-                    gHUJPXjcco6/Fpxe084fTN2RApYnspOfTDzwLouUF3cY/GSya12tkZ2dOjc7HTbx
-                    OqqwhLCRWt82oFThb2nNJIpsjdH3dqfNNnd5fPUhrwyuM8CLF19YLDlqF57eJbDl
-                    qWuFcYQEBbcmPTYPw59VBOf1VKjk1OkRrWRHoQIDAQABAoIBAG5tkL40Kc3Iu8Op
-                    GMg+EkcEXGEI10ltCWHYew/GRiK/nvg+VpTpQqTXlh8moox5LaiwRGCByFbPZ9tg
-                    eMCaIRAqsasmYsJCIZIkGH9R6EWHXVsDtFcPD9DqRk8+PBPfsnt2pcGjWEeLoW2l
-                    1BrgatbKWO2IJiKVBh09S5Y6h9pYE05/yeD9BXhzGDzW9gFfnE5vawxOMm5uPywR
-                    MbZQbKbgf6rlfkj74inLxgpcaAgwVUrWg45iGimMyKvlnnV5MA6F187rbdq3/iAp
-                    iA8gamQujAq5J40qDW+NgpQA7PMO4OLbzTqUgGAXLSCytce2DfYc49+Kv82KYClN
-                    SJ4D+SkCgYEA+DnyZt1/zGJ5GYt+rHq/8H3UTJz4fG2DL/Sa6nJ0Gqh5u1v6ZFLe
-                    tClQ0Z3wKsWTZG6wX6S8+9nKZfjLj7QHs5egk4bh1QYKrXII8B1cPP5dmNoK4JMG
-                    OkXLvZUnFL0QYfjN1/cyPJmnIBzS0kAhgDHSalXhV/X0qpjKyekIjv8CgYEAzRUM
-                    UxcAKl+d09Amt3VRFlMUamasxilVqwotOYvC0fSNvewrUAO6VUW8jwou/7X00bF+
-                    1BDfl2h2T6ymiUJuCCDCPrBqunX4GZusfobSRIX1BDc8u7PgoiZmyA/oRtXdtCs4
-                    11HYFIwfXka6cYsEHgmdIIF7hsnRhQm6zeYPyV8CgYEArXDPztA127lypEaz3BBo
-                    zMEe9ek4NrjOUVO4athOB9JwPFmoOzEsKvYzYkPY7AnhUuuEkU+qPM+QfG+6zE4e
-                    k33+1RYJ9a6jB04GsL/TE0soWwT/VKtmTpE2KuFszTDNoacXLS+sCmvSOr3pEL9+
-                    qPQm8eXP7oYMzqa0CyCoukECgYEAmxujQaiwwFunBA93aOP7GzZkx4C2hf23RHCi
-                    +dYh2CftmEpqC891+46N6WWbXF2jN4HWWdAVO++PI/2By2iJze3w2/cUEcith7i9
-                    Ask3eQoT4Udh0NlgOWNv8zpMxF52mxDhocDN++RqySQXWU76IznENFSaN7ymkcdl
-                    GNs672MCgYEA7XChmKh63T+F2sqqIdOh7UK1ffWCTauV1tXNUc9mtUKLi6CSGw1e
-                    kZ/taec+CGf8KrlLXHIXxsDyspDbswDTl8sjPJKQHp0JnBdceorXFpHzziCJyy3K
-                    9Uj+InBdwkohuqnr/SyVU84d7coR3qQkcTNIer0m9nWQdIMHw5Dy8Xw=
-                    -----END RSA PRIVATE KEY-----
-
+          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
           ARGS: "-avz --delete"
           SOURCE: "dist/"
-          REMOTE_HOST: 39.108.154.184
-          REMOTE_USER: root
-          TARGET: /usr/share/nginx/html/
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.TARGET }}
