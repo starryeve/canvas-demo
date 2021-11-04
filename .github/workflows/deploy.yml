@@ -71,7 +71,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
           ARGS: "-avz --delete"
 #           SOURCE: "dist"
-          LOCAL_PATH: './dist/*'  # 对应我们项目build的文件夹路径
+          LOCAL_PATH: 'dist'  # 对应我们项目build的文件夹路径
           REMOTE_PATH: '/usr/share/nginx/html/dist'
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
