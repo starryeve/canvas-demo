@@ -1,12 +1,10 @@
-
-export default function useClock(canvas: HTMLCanvasElement):{
-  initClock:() => void
+export default function useClock(canvas: HTMLCanvasElement): {
+  initClock: () => void;
 } {
-
   const initClock: () => void = (): void => {
     const PI = Math.PI;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
+    const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
 
     const draw = function () {
       ctx.save();
@@ -25,14 +23,12 @@ export default function useClock(canvas: HTMLCanvasElement):{
 
       ctx.closePath();
       ctx.stroke();
-  
 
       //* 获取时间 */
       const time = new Date();
       const hour = time.getHours() % 12;
       const min = time.getMinutes();
       const sec = time.getSeconds();
-   
 
       /* 绘制时针 */
       ctx.rotate(
@@ -42,7 +38,7 @@ export default function useClock(canvas: HTMLCanvasElement):{
       ctx.moveTo(-10, 0);
       ctx.lineTo(40, 0);
       ctx.lineWidth = 10;
-      ctx.strokeStyle = '#aad';
+      ctx.strokeStyle = "#aad";
       ctx.closePath();
       ctx.stroke();
 
@@ -54,11 +50,11 @@ export default function useClock(canvas: HTMLCanvasElement):{
       ctx.beginPath();
       ctx.moveTo(-10, 0);
       ctx.lineTo(80, 0);
-      ctx.strokeStyle = '#a33';
+      ctx.strokeStyle = "#a33";
       ctx.lineWidth = 5;
       ctx.closePath();
       ctx.stroke();
-      
+
       ctx.restore();
       ctx.save();
 
@@ -67,7 +63,7 @@ export default function useClock(canvas: HTMLCanvasElement):{
       ctx.beginPath();
       ctx.moveTo(-10, 0);
       ctx.lineTo(80, 0);
-      ctx.strokeStyle = '#faf';
+      ctx.strokeStyle = "#faf";
       ctx.closePath();
       ctx.stroke();
 
@@ -95,12 +91,12 @@ export default function useClock(canvas: HTMLCanvasElement):{
       ctx.restore();
 
       ctx.restore();
-      requestAnimationFrame(draw)
+      requestAnimationFrame(draw);
     };
 
-    draw()
+    draw();
   };
   return {
-    initClock
+    initClock,
   };
 }

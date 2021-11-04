@@ -48,11 +48,7 @@
   ],
   "dependencies": {
     "canvas-nest.js": "^2.0.4",
-<<<<<<< HEAD
     "vue": "^3.2.20"
-=======
-    "vue": "^3.1.5"
->>>>>>> 879f0e351e57d2b7f081dc20eb60bde8753fc53c
   },
   "config": {
     "commitizen": {

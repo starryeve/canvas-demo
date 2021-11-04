@@ -1,9 +1,9 @@
 module.exports = {
-  parser: 'vue-eslint-parser',
+  parser: "vue-eslint-parser",
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: "@typescript-eslint/parser",
     ecmaVersion: 12,
-    sourceType: 'module',
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true
     }
@@ -11,29 +11,21 @@ module.exports = {
   extends: [
     // add more generic rulesets here, such as:
     // 'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
+    "plugin:vue/vue3-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  plugins: [
-    'vue'
-  ],
+  plugins: ["vue"],
   rules: {
     // allow async-await
-    'generator-star-spacing': 'off',
+    "generator-star-spacing": "off",
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'indent': [
-      'error',
-      2
-    ],
-    'vue/html-indent': [
-      'error',
-      2
-    ],
-    'quotes': [
-      'error',
-      'single'
-    ],
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "vue/html-closing-bracket-newline": "on",
+    indent: ["error", 2],
+    "vue/html-indent": ["error", 2],
+    quotes: ["error", "double"],
+    semi: ["error", "always"]
+
     // 'no-unused-vars': 'warn',
   }
-}
+};
